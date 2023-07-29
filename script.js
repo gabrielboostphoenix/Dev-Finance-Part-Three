@@ -37,20 +37,34 @@ const transactionsArray = [
     }
 ]
 
-// Generating the HTML code for the objects and adding them in the index.html
-transactionsArray.forEach((transaction) => {
-    // Creating a constant called row that stores a html element tr
-    const row = document.createElement("tr")
-    // Formating the string containing transaction information and adding it to the html element tr
-    row.innerHTML = `
-        <td class="description">${transaction.description}</td>
-        <td class="expense">${transaction.amount}</td>
-        <td class="date">${transaction.date}</td>
-        <td><img src="assets/minus.svg" alt="Remover transação"></td>
-    `
-    // Adding the generated html code of the transactions in the index.html (Step 2)
-    // Creating the variable of transactions data table
-    let transactionDataTable = document.querySelector("#data-table tbody")
-    // Adding the html code of transaction in the transaction data table
-    transactionDataTable.appendChild(row)    
+// This is a constant called DOM (Document Object Model)
+const DOM = {
+    // This functionality adds the transaction in the table
+    addTransaction(transactionTableID, transaction) {
+        // Creating a constant called row that stores a html element tr
+        const row = document.createElement("tr")
+        // Adding the html formatted code structure in the constant row
+        row.innerHTML = DOM.innerHTMLTransaction(transaction)
+        // Inserting formatted constant called row in the transaction data table
+        transactionTableID.appendChild(row)
+    },
+    // This functionality represents the full HTML code
+    innerHTMLTransaction(transactionObject) {
+        // Creating a constant containing the structure's html code
+        const structureHTMLCode = `
+            <td class="description">${transactionObject.description}</td>
+            <td class="expense">${transactionObject.amount}</td>
+            <td class="date">${transactionObject.date}</td>
+            <td><img src="assets/minus.svg" alt="Remover transação"></td>
+        `
+        // Returning the constant
+        return structureHTMLCode
+    }
+}
+
+// Using ".forEach()"" method to traverse the transactions Array
+// Creating an arrow function to realize the required operations to insert in the table
+transactionsArray.forEach((arrayItem) => {
+    const transactionDataTable = document.querySelector("#data-table tbody")
+    DOM.addTransaction(transactionDataTable, arrayItem)
 })
