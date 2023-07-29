@@ -1,0 +1,284 @@
+@charset "UTF-8";
+
+/* CSS VARIABLES */
+:root {
+    --dark-blue: #363F5F;
+    --green: #49AA26;
+    --light-green: #3DD705;
+    --red: #E92929;
+}
+
+/* UNIVERSAL SELECTOR */
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+html {
+    /* TIP: DEFAULT FONT SIZE OF THE BROWSER (GOOGLE CHROME) IS 16PX (100%) */
+    font-size: 93.75%; /* 15px */
+}
+
+/* ELEMENT/TAG SELECTORS */
+body {
+    background-color: #f0f2f5;
+    font-family: 'Poppins', sans-serif;
+}
+
+header {
+    background-color: #2D4A22;
+    padding: 2rem 0rem 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h2 {
+    margin-top: 3.2rem;
+    margin-bottom: 0.8rem;
+    color: var(--dark-blue);
+    font-weight: 400;
+}
+
+a {
+    color: var(--green);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--light-green);
+}
+
+td.description {
+    color: var(--dark-blue);
+}
+
+td.income {
+    color: #12A454;
+}
+
+td.expense {
+    color: var(--red);
+}
+
+table tbody tr {
+    opacity: 0.7;
+}
+
+table tbody tr:hover {
+    opacity: 1;
+}
+
+table thead th {
+    background-color: white;
+    font-weight: normal;
+    padding: 1rem 2rem;
+    text-align: left;
+}
+
+table tbody td {
+    background-color: white;
+    padding: 1rem 2rem;
+}
+
+table thead tr th:first-child,
+table tbody tr td:first-child {
+    border-radius: 0.25rem 0rem 0rem 0.25rem;
+}
+
+table thead tr th:last-child,
+table tbody tr td:last-child {
+    border-radius: 0rem 0.25rem 0.25rem 0rem;
+}
+
+input {
+    border: none;
+    border-radius: 0.2rem;
+    padding: 0.8rem;
+    width: 100%;
+}
+
+button {
+    width: 100%;
+    height: 50px;
+    border: none;
+    color: white;
+    background-color: var(--green);
+    padding: 0px;
+    border-radius: 0.25rem;
+}
+
+button:hover {
+    background-color: var(--light-green);
+    cursor: pointer;
+}
+
+footer {
+    text-align: center;
+    padding: 4rem 0 2rem;
+    color: var(--dark-blue);
+    opacity: 0.6;
+}
+
+/* RESPONSIVITY */
+@media screen and (min-width: 800px) {
+    html {
+        font-size: 87.5%; /* EQUIVALENT TO 14PX */
+    }
+
+    /* THIS IS RELATIVE OVER THE SECTION WITH THE BALANCE CLASS */
+    #balance {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+}
+/* END OF RESPONSIVITY */
+
+/* CLASS SELECTORS */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.container {
+    width: min(90vw, 800px);
+    margin: auto;
+}
+
+.button.new {
+    display: inline-block;
+    margin-bottom: 0.8rem;
+}
+
+.card {
+    background-color: white;
+    padding: 1.5rem 2rem;
+    border-radius: 0.25rem;
+    margin-bottom: 2rem;
+    color: var(--dark-blue);
+}
+
+.card h3 {
+    font-size: 1rem;
+    font-weight: normal;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card p {
+    font-size: 2rem;
+    line-height: 3rem;
+    margin-top: 1rem;
+}
+
+.card.total {
+    background-color: var(--green);
+    color: white;
+}
+
+.modal-overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal {
+    background-color: #F0F2F5;
+    padding: 2.4rem;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+}
+
+.input-group {
+    margin-top: 0.8rem;
+}
+
+.input-group small {
+    opacity: 0.4;
+}
+
+.input-group.actions {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input-group.actions .button, .input-group.actions button {
+    width: 48%;
+}
+
+.button.cancel {
+    color: var(--red);
+    border: 2px solid var(--red);
+    border-radius: 0.25rem;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.6;
+}
+
+.button.cancel:hover {
+    opacity: 1;
+}
+
+/* ID SELECTORS */
+#logo {
+    font-weight: 100;
+    color: #fff;
+}
+
+#balance {
+    margin-top: -8rem;
+}
+
+#balance h2 {
+    color: white;
+}
+
+#transaction {
+    width: 100%;
+    display: block;
+    overflow-x: auto;
+}
+
+#data-table {
+    width: 100%;
+    border-spacing: 0rem 0.5rem;
+    color: #969CB3;
+}
+
+#form h2 {
+    margin-top: 0px;
+}
