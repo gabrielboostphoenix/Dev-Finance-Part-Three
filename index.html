@@ -7,11 +7,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,100;1,400&display=swap" rel="stylesheet">
-    <script src="transactionArrayScript.js" defer></script>
-    <script src="transactionClassScript.js" defer></script>
-    <script src="utilityClassScript.js" defer></script>
-    <script src="domClassScript.js" defer></script>
-    <script src="modalAnimationScript.js" defer></script>
+    <script src="transactionArray.js" defer></script>
+    <script src="transactionClass.js" defer></script>
+    <script src="utilityClass.js" defer></script>
+    <script src="domClass.js" defer></script>
+    <script src="appClass.js" defer></script>
+    <script src="modalClass.js" defer></script>
+    <script src="formClass.js" defer></script>
     <script src="mainScript.js" defer></script>
     <title>dev.finance$</title>
 </head>
@@ -46,7 +48,7 @@
         </section>
         <section id="transaction">
             <h2 class="sr-only">Transações</h2>
-            <a href="#" class="button new" onclick="modal.open()">+ Nova Transação</a>
+            <a href="#" class="button new" onclick="Modal.open()">+ Nova Transação</a>
             <table id="data-table">
                 <thead>
                     <tr>
@@ -65,7 +67,7 @@
         <div class="modal">
             <div id="form">
                 <h2>Nova Transação</h2>
-                <form action="">
+                <form onsubmit="Form.submit(event)">
                     <div class="input-group">
                         <label class="sr-only" for="description">Descrição</label>
                         <input type="text" name="description" id="description" placeholder="Descrição">
@@ -80,7 +82,7 @@
                         <input type="date" name="date" id="date">
                     </div>
                     <div class="input-group actions">
-                        <a href="#" class="button cancel" onclick="modal.close()">Cancelar</a>
+                        <a href="#" class="button cancel" onclick="Modal.close()">Cancelar</a>
                         <button type="submit">Salvar</button>
                     </div>
                 </form>
