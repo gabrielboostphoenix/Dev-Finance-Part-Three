@@ -12,7 +12,7 @@ const DOM = {
             <td class="description">${transaction.description}</td>
             <td class="${transactionAmountColor}">${amountCurrencyFormat}</td>
             <td class="date">${transaction.date}</td>
-            <td><img src="assets/minus.svg" alt="Remover transação"></td>
+            <td onclick=""><img src="assets/minus.svg" alt="Remover transação"></td>
         `
         // Returning the constant
         return structureHTMLCode
@@ -36,5 +36,9 @@ const DOM = {
         income.innerHTML = Utils.currencyFormat(Transaction.income())
         expense.innerHTML = Utils.currencyFormat(Transaction.expenses())
         total.innerHTML = Utils.currencyFormat(Transaction.total())
+    },
+    // This functionality removes the transactions in the screen
+    clearTransactions() {
+        DOM.transactionDataTable.innerHTML = ""
     }
 }

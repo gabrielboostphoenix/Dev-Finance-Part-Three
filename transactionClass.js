@@ -1,12 +1,24 @@
 // That's a constant called transaction (singular) that stores the object relative to the transaction
 const Transaction = {
+    // Attribute
+    all: TransactionsArray,
     // Functionalities
+    add(transaction) {
+        // This functionality adds a transation in the transactions array
+        Transaction.all.push(transaction)
+        App.reload()
+    },
+    remove(index) {
+        // This functionality removes a transaction in the transactions array
+        Transaction.all.splice(index)
+        App.reload()
+    },
     income() {
         // This functionality adds up the entries
         // Creating a reset variable called income
         let income = 0
         // Traversing the array of income amout values
-        TransactionsArray.forEach((transaction) => {
+        Transaction.all.forEach((transaction) => {
             // Checking if the amount values are negatives
             if (transaction.amount > 0) {
                 // Adding all of the amount values of array in income variable
@@ -21,7 +33,7 @@ const Transaction = {
         // Creating a reset variable called expense
         let expense = 0
         // Traversing the array of income amount values
-        TransactionsArray.forEach((transaction) => {
+        Transaction.all.forEach((transaction) => {
             // Checking if the amount values are negatives
             if (transaction.amount < 0) {
                 // Adding all of the amount values of array in expense variable

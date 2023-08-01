@@ -1,5 +1,5 @@
 // That's a constant called modal
-const modal = {
+const Modal = {
     // Methods or Functionalities
     open() {
         // This functionality open the modal
