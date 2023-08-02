@@ -3,8 +3,8 @@ const App = {
     // Functionalities
     // This functionality initializes the read of the transaction array
     init() {
-        Transaction.all.forEach((arrayTransactionItem) => {
-            DOM.addTransaction(arrayTransactionItem)
+        Transaction.all.forEach((arrayTransactionItem, index) => {
+            DOM.addTransaction(arrayTransactionItem, index)
         })
         DOM.updateBalance()
     },

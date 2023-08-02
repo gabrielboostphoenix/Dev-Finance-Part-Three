@@ -4,7 +4,7 @@ const DOM = {
     transactionDataTable: document.querySelector("#data-table tbody"),
     // Methods
     // This functionality represents the complete html code for each transaction
-    innerHTMLTransaction(transaction) {
+    innerHTMLTransaction(transaction, index) {
         // Creating required constants relative to the structure's html code
         const transactionAmountColor = transaction.amount > 0 ? "income" : "expense"
         const amountCurrencyFormat = Utils.currencyFormat(transaction.amount)
@@ -12,17 +12,19 @@ const DOM = {
             <td class="description">${transaction.description}</td>
             <td class="${transactionAmountColor}">${amountCurrencyFormat}</td>
             <td class="date">${transaction.date}</td>
-            <td onclick=""><img src="assets/minus.svg" alt="Remover transação"></td>
+            <td><img onclick="Transaction.remove(${index})" src="assets/minus.svg" alt="Remover transação"></td>
         `
         // Returning the constant
         return structureHTMLCode
     },
     // This functionality adds the transaction in the table
-    addTransaction(transaction) {
+    addTransaction(transaction, index) {
         // Creating a constant called row that stores a html element tr
         const row = document.createElement("tr")
         // Adding the html formatted code structure in the constant row
-        row.innerHTML = DOM.innerHTMLTransaction(transaction)
+        row.innerHTML = DOM.innerHTMLTransaction(transaction, index)
+        // Setting the data attribute in html
+        row.dataset.indexNumber = index
         // Inserting formatted constant called row in the transaction data table
         DOM.transactionDataTable.appendChild(row)
     },

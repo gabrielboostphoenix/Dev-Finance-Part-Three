@@ -10,7 +10,7 @@ const Transaction = {
     },
     remove(index) {
         // This functionality removes a transaction in the transactions array
-        Transaction.all.splice(index)
+        Transaction.all.splice(index, 1)
         App.reload()
     },
     income() {

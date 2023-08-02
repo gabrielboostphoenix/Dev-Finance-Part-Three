@@ -20,7 +20,7 @@ const Utils = {
     // This is a functionality that converts the amount value
     formatAmount(value) {
         // Converting the type of the data to number data and doing the multiplication to 100
-        value = Number(value) * 100
+        value = Number(value.replace(/\,\./g, "")) * 100
         // returning the formatted amount value
         return value
     },
