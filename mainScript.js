@@ -1,2 +1,2 @@
 // Code Working
-App.init()
+App.init();

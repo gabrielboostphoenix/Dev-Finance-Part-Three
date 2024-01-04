@@ -5,27 +5,28 @@ const Form = {
     amountField: document.querySelector("input#amount"),
     dateField: document.querySelector("input#date"),
     // Functionalities
+    // This functionality sends the form datas
     submit(event) {
-        // This functionality sends the form datas
-        event.preventDefault()
-        // Checking for errors
+        // Setting the default behavior of this event
+        event.preventDefault();
+        // Checking for errors using functions through try/catch
         try {
-            // Checking if data fields aren't empty
-            Form.validateFields()
+            // Checking for data fields aren't empty
+            Form.validateFields();
             // Formatting the data fields to save it
-            const transaction = Form.formatDataFields()
-            // Saving the form field datas
-            Form.saveTransactionData(transaction)
-            // Cleaning the form field datas
-            Form.clearDataFields()
+            const transaction = Form.formatDataFields();
+            // Saving the form field datas in LocalStorage
+            Form.saveTransactionInLocalStorage(transaction);
+            // Cleaning the form fields datas
+            Form.clearDataFields();
         } catch (error) {
             // Showing messages relating to the erros
-            window.alert(error.message)
+            window.alert(error.message);
         }
         // Closing the modal
-        Modal.close()
+        Modal.close();
         // Reloading the app
-        App.reload()
+        App.reload();
     },
     validateFields() {
         // This functionality validates the data fields
@@ -51,23 +52,32 @@ const Form = {
             date
         }
     },
-    saveTransactionData(transaction) {
-        // This functionality saves all of the form field datas
-        // Putting an object in the end of array like array item
-        Transaction.add(transaction)
-    },
     clearDataFields() {
-        // This functionality cleans the form field datas
+        // This functionality cleans the form fields datas
         Form.descriptionField.value = ""
         Form.amountField.value = ""
         Form.dateField.value = ""
     },
     getFormData() {
-        // This functionality captures the form data
+        // This functionality captures the form fields datas
         return {
             description: Form.descriptionField.value,
             amount: Form.amountField.value,
             date: Form.dateField.value
+        }
+    },
+    saveTransactionInLocalStorage(transaction) {
+        // Checking for existing local storage
+        if (localStorage.getItem('transactions') !== null) {
+            console.log('transaction saved with successfully!');
+            // Getting everything saved in local storage
+            let transactionsArray = JSON.parse(localStorage.getItem('transactions'));
+            // Spreading what was saved in a new array and adding the new transaction
+            let newTransactionsArray = [...transactionsArray, transaction];
+            // Converting and saving the transaction
+            localStorage.setItem('transactions', JSON.stringify(newTransactionsArray));
+        } else {
+            return alert('Não foi possível salvar a transação, tente recarregar a página!');
         }
     }
 }
