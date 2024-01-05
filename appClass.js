@@ -23,6 +23,11 @@ const App = {
                 DOM.updateBalance();
             } else {
                 console.log('There are no transactions in the local storage!');
+                // Cleaning all of the balance results
+                DOM.clearBalances();
+                // Cleaning everything all of the transactions in the screen
+                DOM.clearTransactions();
+                console.log("The transactions's screen was cleaned with successfully!");
             }
         } else {
             console.log('Setting the transactions array in localStorage!');

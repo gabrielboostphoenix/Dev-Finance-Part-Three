@@ -39,6 +39,16 @@ const DOM = {
         expense.innerHTML = Utils.currencyFormat(Transaction.expenses());
         total.innerHTML = Utils.currencyFormat(Transaction.total());
     },
+    clearBalances() {
+        // Creating constants
+        const income = document.querySelector(".card.income p");
+        const expense = document.querySelector(".card.expense p");
+        const total = document.querySelector(".card.total p");
+        // Clearing the balance results
+        income.innerHTML = '';
+        expense.innerHTML = '';
+        total.innerHTML = '';
+    },
     // This functionality removes the transactions in the screen
     clearTransactions() {
         DOM.transactionDataTable.innerHTML = "";

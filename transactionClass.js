@@ -8,7 +8,19 @@ const Transaction = {
         Transaction.all = transactions;
     },
     remove(index) {
-        
+        // This functionality removes a transaction in transactions array from local storage
+        // Removing everything saved before in local storage
+        localStorage.removeItem('transactions');
+        // Getting the new transactions array and converting it
+        let newTransactionsArray = JSON.stringify(Transaction.all.filter((item) => {
+            item !== Transaction.all[index];
+        }));
+        // Saving the new transactions array in the local storage
+        localStorage.setItem('transactions', newTransactionsArray);
+        // Removing all of the transactions in array
+        Transaction.removeTransactionsArray();
+        // Reloading the transactions's screen
+        App.reload();
     },
     income() {
         // This functionality adds up the entries
