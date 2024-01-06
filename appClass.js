@@ -6,7 +6,7 @@ const App = {
         // This conditional statement checks for an existing 'transactions' key in local storage
         if (localStorage.getItem('transactions') !== null) {
             console.log('the transactions array exists in localStorage!');
-            // Getting converted everything saved in localStorage
+            // Getting everything saved and converted in local storage
             let transactionsArray = JSON.parse(localStorage.getItem('transactions'));
             // Checking for existing transactions in the list
             if (Array.isArray(transactionsArray) && transactionsArray.length > 0) {
@@ -25,7 +25,7 @@ const App = {
                 console.log('There are no transactions in the local storage!');
                 // Cleaning all of the balance results
                 DOM.clearBalances();
-                // Cleaning everything all of the transactions in the screen
+                // Cleaning all of the transactions in the screen
                 DOM.clearTransactions();
                 console.log("The transactions's screen was cleaned with successfully!");
             }
