@@ -69,7 +69,6 @@ const Form = {
     saveTransactionInLocalStorage(transaction) {
         // Checking for existing local storage
         if (localStorage.getItem('transactions') !== null) {
-            console.log('transaction saved with successfully!');
             // Getting everything saved in local storage
             let transactionsArray = JSON.parse(localStorage.getItem('transactions'));
             // Spreading what was saved in a new array and adding the new transaction
