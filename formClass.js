@@ -40,7 +40,7 @@ const Form = {
         // This functionality formats the data fields
         let {description, amount, date} = Form.getFormData()
         // Formatting the amount value
-        amount = Utils.formatAmount(amount)
+        amount = Number(amount)
         // Formatting the date value
         date = Utils.formatDate(date)
         // Formatting the description value
